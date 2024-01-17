@@ -11,7 +11,7 @@ import Foundation
 class AnimalListViewModel: ObservableObject {
     
     static func create() -> AnimalListViewModel {
-        return AnimalListViewModel(repository: AnimalRepositoryImpl.create())
+        return AnimalListViewModel(useCase: AnimalUseCaseImpl.create())
     }
     
     @Published
@@ -19,10 +19,10 @@ class AnimalListViewModel: ObservableObject {
     @Published
     private (set) var selectedAnimalCategory: AnimalCategory = .defaultSelectedCategory
     
-    private let repository: AnimalRepository
+    private let useCase: AnimalUseCase
     
-    init(repository: AnimalRepository) {
-        self.repository = repository
+    init(useCase: AnimalUseCase) {
+        self.useCase = useCase
     }
     
     func fetchAnimals(category: AnimalCategory) async {
@@ -32,7 +32,7 @@ class AnimalListViewModel: ObservableObject {
     
     func fetchAnimals() async {
         do {
-            animals = try await repository.findAnimal(name: selectedAnimalCategory.name)
+            animals = try await useCase.findAnimal(name: selectedAnimalCategory.name)
         }
         catch {
             print(error)

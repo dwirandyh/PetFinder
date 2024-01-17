@@ -11,7 +11,7 @@ import Foundation
 class AnimalPhotoViewModel: ObservableObject {
     
     static func create(animal: Animal) -> AnimalPhotoViewModel {
-        return AnimalPhotoViewModel(animal: animal, repository: AnimalRepositoryImpl.create())
+        return AnimalPhotoViewModel(animal: animal, useCase: AnimalUseCaseImpl.create())
     }
     
     @Published
@@ -21,18 +21,18 @@ class AnimalPhotoViewModel: ObservableObject {
     
     private var page: Int = 1
     private let animal: Animal
-    private let repository: AnimalRepository
+    private let useCase: AnimalUseCase
     
-    init(animal: Animal, repository: AnimalRepository) {
+    init(animal: Animal, useCase: AnimalUseCase) {
         self.animal = animal
-        self.repository = repository
+        self.useCase = useCase
     }
     
     func findAnimalPhoto() async {
         do {
             isLoading = true
             
-            let loadedPhotos: [AnimalPhoto] = try await repository.findAnimalPhoto(keyword: animal.name, page: page)
+            let loadedPhotos: [AnimalPhoto] = try await useCase.findAnimalPhoto(keyword: animal.name, page: page)
             photos.append(contentsOf: loadedPhotos)
             
             isLoading = false

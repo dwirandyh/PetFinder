@@ -48,7 +48,7 @@ struct AnimalPhotoPage: View {
 
 #Preview {
     AnimalPhotoPage(
-        viewModel: AnimalPhotoViewModel(
+        viewModel: AnimalPhotoViewModel.create(
             animal: Animal(
                 name: "Cheetah",
                 kingdom: "Animalia",
@@ -59,8 +59,7 @@ struct AnimalPhotoPage: View {
                 genus: "Acinonyx",
                 scientificName: "Acinonyx jubatus",
                 location: ["Africa"]
-            ),
-            repository: AnimalRepositoryImpl.create()
+            )
         )
     )
 }
