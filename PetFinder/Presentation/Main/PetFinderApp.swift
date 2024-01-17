@@ -7,16 +7,16 @@
 
 import SwiftUI
 
-@main
-struct PetFinderApp: App {
-    var body: some Scene {
-        WindowGroup {
-            TabView {
-                AnimalListPage(viewModel: AnimalListViewModel.create())
-                    .tabItem {
-                        Label("Home", systemImage: "house")
+struct PetFinderApp: View {
+    var body: some View {
+        TabView {
+            AnimalListPage(viewModel: AnimalListViewModel.create())
+                .tabItem {
+                    VStack {
+                        Image(systemName: "house")
+                        Text("Home")
                     }
-            }
+                }
         }
     }
 }

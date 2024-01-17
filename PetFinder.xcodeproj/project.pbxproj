@@ -26,6 +26,8 @@
 		749B8FC62B566B2800BD40BC /* AnimaListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749B8FC52B566B2800BD40BC /* AnimaListResponse.swift */; };
 		749B8FCA2B566CAD00BD40BC /* URLProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749B8FC92B566CAD00BD40BC /* URLProvider.swift */; };
 		74DCD6082B57878E006FB492 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DCD6072B57878E006FB492 /* NetworkError.swift */; };
+		74F000A52B578D3800D4A810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F000A42B578D3800D4A810 /* AppDelegate.swift */; };
+		74F000A72B578D8B00D4A810 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F000A62B578D8B00D4A810 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,9 @@
 		749B8FC52B566B2800BD40BC /* AnimaListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimaListResponse.swift; sourceTree = "<group>"; };
 		749B8FC92B566CAD00BD40BC /* URLProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProvider.swift; sourceTree = "<group>"; };
 		74DCD6072B57878E006FB492 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		74F000A42B578D3800D4A810 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		74F000A62B578D8B00D4A810 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		74F000A82B578EA900D4A810 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +123,7 @@
 		749B8F782B56308800BD40BC /* PetFinder */ = {
 			isa = PBXGroup;
 			children = (
+				74F000A82B578EA900D4A810 /* Info.plist */,
 				749B8FB92B56677900BD40BC /* Data */,
 				749B8FAB2B56319200BD40BC /* Domain */,
 				749B8FA52B5630D500BD40BC /* Resources */,
@@ -164,6 +170,8 @@
 			isa = PBXGroup;
 			children = (
 				749B8F792B56308800BD40BC /* PetFinderApp.swift */,
+				74F000A42B578D3800D4A810 /* AppDelegate.swift */,
+				74F000A62B578D8B00D4A810 /* SceneDelegate.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -400,9 +408,11 @@
 				749B8FCA2B566CAD00BD40BC /* URLProvider.swift in Sources */,
 				74DCD6082B57878E006FB492 /* NetworkError.swift in Sources */,
 				749B8FAA2B56318500BD40BC /* AnimalCategoryItemView.swift in Sources */,
+				74F000A52B578D3800D4A810 /* AppDelegate.swift in Sources */,
 				749B8FB82B5666E300BD40BC /* Animal.swift in Sources */,
 				749B8FB02B565DFC00BD40BC /* Assets.swift in Sources */,
 				749B8FC62B566B2800BD40BC /* AnimaListResponse.swift in Sources */,
+				74F000A72B578D8B00D4A810 /* SceneDelegate.swift in Sources */,
 				749B8FA82B56314800BD40BC /* AnimalCategoryView.swift in Sources */,
 				749B8FB22B56625900BD40BC /* AnimalListPage.swift in Sources */,
 				749B8FBE2B5667A400BD40BC /* NetworkClient.swift in Sources */,
@@ -499,7 +509,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -556,7 +566,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -577,7 +587,8 @@
 				DEVELOPMENT_TEAM = WDAXX75T8X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = PetFinder/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = NO;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -606,7 +617,8 @@
 				DEVELOPMENT_TEAM = WDAXX75T8X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = PetFinder/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = NO;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

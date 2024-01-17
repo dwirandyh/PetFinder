@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-extension ShapeStyle where Self == Color {
+extension Color {
     static var backgroundColor: Color {
         return Color("BackgroundColor")
     }
