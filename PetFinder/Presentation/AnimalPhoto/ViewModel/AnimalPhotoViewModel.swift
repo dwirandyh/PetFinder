@@ -16,6 +16,8 @@ class AnimalPhotoViewModel: ObservableObject {
     
     @Published
     private (set) var photos: [AnimalPhoto] = []
+    @Published
+    var isLoading: Bool = false
     
     private var page: Int = 1
     private let animal: Animal
@@ -28,11 +30,15 @@ class AnimalPhotoViewModel: ObservableObject {
     
     func findAnimalPhoto() async {
         do {
+            isLoading = true
+            
             let loadedPhotos: [AnimalPhoto] = try await repository.findAnimalPhoto(keyword: animal.name, page: page)
             photos.append(contentsOf: loadedPhotos)
+            
+            isLoading = false
         }
         catch {
-            print(error)
+            isLoading = false
         }
     }
     

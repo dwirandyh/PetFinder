@@ -21,17 +21,21 @@ struct AnimalPhotoPage: View {
     
     var body: some View {
         VStack {
-            List(viewModel.photos) { photo in
-                AnimalPhotoItemView(photo: photo)
-                    .onAppear {
-                        if photo == viewModel.photos.last {
-                            Task {
-                                await viewModel.findNextPhoto()
+            if viewModel.photos.isEmpty && viewModel.isLoading {
+                ActivityIndicator(isAnimating: $viewModel.isLoading, style: .large)
+            } else {
+                List(viewModel.photos) { photo in
+                    AnimalPhotoItemView(photo: photo)
+                        .onAppear {
+                            if photo == viewModel.photos.last {
+                                Task {
+                                    await viewModel.findNextPhoto()
+                                }
                             }
                         }
-                    }
+                }
+                .listStyle(.plain)
             }
-            .listStyle(.plain)
         }
         .navigationBarTitle("Discover Animal Photos", displayMode: .inline)
         .onAppear {
