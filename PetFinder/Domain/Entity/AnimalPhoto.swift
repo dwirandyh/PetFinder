@@ -11,7 +11,7 @@ struct AnimalPhoto: Identifiable {
     let id: Int
     let photographer: String
     let photographerURL: URL?
-    let photo: PhotoSource
+    let source: PhotoSource
 }
 
 extension AnimalPhoto {

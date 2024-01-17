@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		745554052B57BB01000B0490 /* AnimalPhotoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745554042B57BB01000B0490 /* AnimalPhotoItemView.swift */; };
+		745554082B57C00A000B0490 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 745554072B57C00A000B0490 /* SDWebImageSwiftUI */; };
 		746B2E092B57AF560044CFED /* AnimaPhotoListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746B2E082B57AF560044CFED /* AnimaPhotoListResponse.swift */; };
 		746B2E0C2B57B0B30044CFED /* APINinjasURLProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746B2E0B2B57B0B30044CFED /* APINinjasURLProvider.swift */; };
 		746B2E0E2B57B0CE0044CFED /* PexelsURLProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746B2E0D2B57B0CE0044CFED /* PexelsURLProvider.swift */; };
@@ -96,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				745554082B57C00A000B0490 /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +349,9 @@
 			dependencies = (
 			);
 			name = PetFinder;
+			packageProductDependencies = (
+				745554072B57C00A000B0490 /* SDWebImageSwiftUI */,
+			);
 			productName = PetFinder;
 			productReference = 749B8F762B56308800BD40BC /* PetFinder.app */;
 			productType = "com.apple.product-type.application";
@@ -419,6 +424,9 @@
 				Base,
 			);
 			mainGroup = 749B8F6D2B56308800BD40BC;
+			packageReferences = (
+				745554062B57C00A000B0490 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = 749B8F772B56308800BD40BC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -816,6 +824,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		745554062B57C00A000B0490 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = exactVersion;
+				version = 2.2.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		745554072B57C00A000B0490 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 745554062B57C00A000B0490 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 749B8F6E2B56308800BD40BC /* Project object */;
 }

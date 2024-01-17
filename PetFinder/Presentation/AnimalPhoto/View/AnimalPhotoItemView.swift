@@ -5,6 +5,7 @@
 //  Created by Dwi Randy H on 17/01/24.
 //
 
+import SDWebImageSwiftUI
 import SwiftUI
 
 struct AnimalPhotoItemView: View {
@@ -22,8 +23,15 @@ struct AnimalPhotoItemView: View {
     var body: some View {
         GeometryReader { proxy in
             ZStack {
-                Rectangle()
-                    .foregroundColor(Color.accentColor)
+                WebImage(url: URL(string: photo.source.medium))
+                    .resizable()
+                    .placeholder {
+                        Rectangle().foregroundColor(.gray)
+                    }
+                    .indicator(.activity)
+                    .transition(.fade(duration: 0.5))
+                    .scaledToFill()
+                    .frame(width: width, height: width / 1.77)
                     .onAppear {
                         width = proxy.size.width
                     }
@@ -75,14 +83,14 @@ struct AnimalPhotoItemView: View {
                 id: 0,
                 photographer: "Alexas Fotos",
                 photographerURL: URL(string: "https://www.pexels.com/photo/close-up-photo-of-lion-s-head-2220336/"),
-                photo: .init(
-                    original: "https://images.pexels.com/photos/2220336/pexels-photo-2220336.jpeg",
-                    large: "https://images.pexels.com/photos/2220336/pexels-photo-2220336.jpeg",
-                    medium: "https://images.pexels.com/photos/2220336/pexels-photo-2220336.jpeg",
-                    small: "https://images.pexels.com/photos/2220336/pexels-photo-2220336.jpeg",
-                    portrait: "https://images.pexels.com/photos/2220336/pexels-photo-2220336.jpeg",
-                    landspace: "https://images.pexels.com/photos/2220336/pexels-photo-2220336.jpeg",
-                    tiny: "https://images.pexels.com/photos/2220336/pexels-photo-2220336.jpeg"
+                source: .init(
+                    original: "https://images.pexels.com/photos/2220336/pexels-photo-2220336.jpeg?auto=compress&cs=tinysrgb&h=350",
+                    large: "https://images.pexels.com/photos/2220336/pexels-photo-2220336.jpeg?auto=compress&cs=tinysrgb&h=350",
+                    medium: "https://images.pexels.com/photos/2220336/pexels-photo-2220336.jpeg?auto=compress&cs=tinysrgb&h=350",
+                    small: "https://images.pexels.com/photos/2220336/pexels-photo-2220336.jpeg?auto=compress&cs=tinysrgb&h=350",
+                    portrait: "https://images.pexels.com/photos/2220336/pexels-photo-2220336.jpeg?auto=compress&cs=tinysrgb&h=350",
+                    landspace: "https://images.pexels.com/photos/2220336/pexels-photo-2220336.jpeg?auto=compress&cs=tinysrgb&h=350",
+                    tiny: "https://images.pexels.com/photos/2220336/pexels-photo-2220336.jpeg?auto=compress&cs=tinysrgb&h=350"
                 )
             )
         )

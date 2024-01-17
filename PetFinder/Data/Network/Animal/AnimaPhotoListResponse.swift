@@ -99,7 +99,7 @@ extension AnimalPhotoListResponse.Photo {
             id: id,
             photographer: photographer,
             photographerURL: URL(string: photographerURL),
-            photo: src.toEntity()
+            source: src.toEntity()
         )
     }
 }
