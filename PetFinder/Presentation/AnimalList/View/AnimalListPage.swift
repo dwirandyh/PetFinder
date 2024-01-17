@@ -28,12 +28,18 @@ struct AnimalListPage: View {
             
             ScrollView(showsIndicators: false) {
                 ForEach(viewModel.animals, id: \.name) { animal in
-                    AnimalItemView(animal: animal)
-                        .padding(8)
+                    NavigationLink {
+                        AnimalPhotoPage(viewModel: AnimalPhotoViewModel.create(animal: animal))
+                    } label: {
+                        AnimalItemView(animal: animal)
+                            .padding(8)
+                    }
+                    .buttonStyle(.plain)
                 }
             }
             .padding(.horizontal, 16)
         }
+        .navigationBarHidden(true)
         .background(Color.backgroundColor)
         .padding(.vertical, 16)
         .onAppear {
