@@ -23,6 +23,13 @@ struct AnimalPhotoPage: View {
         VStack {
             List(viewModel.photos) { photo in
                 AnimalPhotoItemView(photo: photo)
+                    .onAppear {
+                        if photo == viewModel.photos.last {
+                            Task {
+                                await viewModel.findNextPhoto()
+                            }
+                        }
+                    }
             }
             .listStyle(.plain)
         }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AnimalPhoto: Identifiable {
+struct AnimalPhoto: Equatable, Identifiable {
     let id: Int
     let photographer: String
     let photographerURL: URL?
@@ -15,7 +15,7 @@ struct AnimalPhoto: Identifiable {
 }
 
 extension AnimalPhoto {
-    struct PhotoSource {
+    struct PhotoSource: Equatable {
         let original: String
         let large: String
         let medium: String
