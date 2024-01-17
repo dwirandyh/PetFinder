@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct AnimalCategoryView: View {
-    let selectedAnimal: AnimalCategory?
+    let selectedCategory: AnimalCategory?
+    let categoryTapped: (AnimalCategory) -> Void
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            LazyHStack(spacing: 16) {
+            HStack(spacing: 16) {
                 ForEach(AnimalCategory.predefined.indices, id: \.self) { index in
-                    let animal: AnimalCategory = AnimalCategory.predefined[index]
-                    AnimalCategoryItemView(animal: animal, isSelected: animal == selectedAnimal)
+                    let category: AnimalCategory = AnimalCategory.predefined[index]
+                    AnimalCategoryItemView(category: category, isSelected: category == selectedCategory) {
+                        categoryTapped(category)
+                    }
+                    .padding(.leading, index == 0 ? 16 : 0)
+                    .padding(.trailing, index == AnimalCategory.predefined.count - 1 ? 16 : 0)
                 }
             }
         }
@@ -24,6 +29,7 @@ struct AnimalCategoryView: View {
 
 #Preview {
     ScrollView {
-        AnimalCategoryView(selectedAnimal: .defaultSelectedCategory)
+        AnimalCategoryView(selectedCategory: .defaultSelectedCategory) { _ in
+        }
     }
 }

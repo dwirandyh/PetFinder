@@ -15,24 +15,24 @@ class AnimalListViewModel: ObservableObject {
     }
     
     @Published
-    var animals: [Animal] = []
+    private (set) var animals: [Animal] = []
     @Published
-    var selectedAnimalCategory: AnimalCategory? = .defaultSelectedCategory
+    private (set) var selectedAnimalCategory: AnimalCategory = .defaultSelectedCategory
     
     private let repository: AnimalRepository
     
     init(repository: AnimalRepository) {
         self.repository = repository
-        
-        Task {
-            await fetchAnimals(animalCategory: .defaultSelectedCategory)
-        }
     }
     
-    func fetchAnimals(animalCategory: AnimalCategory) async {
+    func fetchAnimals(category: AnimalCategory) async {
+        selectedAnimalCategory = category
+        await fetchAnimals()
+    }
+    
+    func fetchAnimals() async {
         do {
-            selectedAnimalCategory = animalCategory
-            animals = try await repository.findAnimal(name: animalCategory.name)
+            animals = try await repository.findAnimal(name: selectedAnimalCategory.name)
         }
         catch {
             print(error)

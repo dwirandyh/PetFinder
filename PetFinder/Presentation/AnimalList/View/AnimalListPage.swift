@@ -14,16 +14,32 @@ struct AnimalListPage: View {
     
     var body: some View {
         VStack(spacing: 16) {
-            AnimalCategoryView(selectedAnimal: viewModel.selectedAnimalCategory)
-                .fixedSize(horizontal: false, vertical: true)
+            Text("Animal Finder")
+                .font(.system(size: 24, weight: .bold))
+                .padding(.horizontal, 16)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            
+            AnimalCategoryView(selectedCategory: viewModel.selectedAnimalCategory) { category in
+                Task {
+                    await viewModel.fetchAnimals(category: category)
+                }
+            }
+            .fixedSize(horizontal: false, vertical: true)
             
             ScrollView(showsIndicators: false) {
-                Text("aa")
+                ForEach(viewModel.animals, id: \.name) { animal in
+                    AnimalItemView(animal: animal)
+                        .padding(8)
+                }
             }
+            .padding(.horizontal, 16)
         }
-        .padding(16)
-        .task {
-//            await viewModel.fetchAnimals(animalCategory: .defaultSelectedCategory)
+        .background(Color.backgroundColor)
+        .padding(.vertical, 16)
+        .onAppear {
+            Task {
+                await viewModel.fetchAnimals()
+            }
         }
     }
 }
