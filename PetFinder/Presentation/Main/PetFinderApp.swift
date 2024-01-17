@@ -10,13 +10,15 @@ import SwiftUI
 struct PetFinderApp: View {
     var body: some View {
         TabView {
-            AnimalListPage(viewModel: AnimalListViewModel.create())
-                .tabItem {
-                    VStack {
-                        Image(systemName: "house")
-                        Text("Home")
-                    }
+            NavigationView {
+                AnimalListPage(viewModel: AnimalListViewModel.create())
+            }
+            .tabItem {
+                VStack {
+                    Image(systemName: "house")
+                    Text("Home")
                 }
+            }
         }
     }
 }

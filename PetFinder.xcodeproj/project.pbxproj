@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		745554052B57BB01000B0490 /* AnimalPhotoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745554042B57BB01000B0490 /* AnimalPhotoItemView.swift */; };
+		746B2E092B57AF560044CFED /* AnimaPhotoListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746B2E082B57AF560044CFED /* AnimaPhotoListResponse.swift */; };
+		746B2E0C2B57B0B30044CFED /* APINinjasURLProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746B2E0B2B57B0B30044CFED /* APINinjasURLProvider.swift */; };
+		746B2E0E2B57B0CE0044CFED /* PexelsURLProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746B2E0D2B57B0CE0044CFED /* PexelsURLProvider.swift */; };
+		746B2E102B57B1D80044CFED /* AnimalPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746B2E0F2B57B1D80044CFED /* AnimalPhoto.swift */; };
+		746B2E122B57B3BC0044CFED /* AnimalPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746B2E112B57B3BC0044CFED /* AnimalPhotoViewModel.swift */; };
+		746B2E162B57B4D60044CFED /* AnimalPhotoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746B2E152B57B4D60044CFED /* AnimalPhotoPage.swift */; };
 		749B8F7A2B56308800BD40BC /* PetFinderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749B8F792B56308800BD40BC /* PetFinderApp.swift */; };
 		749B8F7E2B56308900BD40BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 749B8F7D2B56308900BD40BC /* Assets.xcassets */; };
 		749B8F812B56308900BD40BC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 749B8F802B56308900BD40BC /* Preview Assets.xcassets */; };
@@ -49,6 +56,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		745554042B57BB01000B0490 /* AnimalPhotoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalPhotoItemView.swift; sourceTree = "<group>"; };
+		746B2E082B57AF560044CFED /* AnimaPhotoListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimaPhotoListResponse.swift; sourceTree = "<group>"; };
+		746B2E0B2B57B0B30044CFED /* APINinjasURLProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APINinjasURLProvider.swift; sourceTree = "<group>"; };
+		746B2E0D2B57B0CE0044CFED /* PexelsURLProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PexelsURLProvider.swift; sourceTree = "<group>"; };
+		746B2E0F2B57B1D80044CFED /* AnimalPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalPhoto.swift; sourceTree = "<group>"; };
+		746B2E112B57B3BC0044CFED /* AnimalPhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalPhotoViewModel.swift; sourceTree = "<group>"; };
+		746B2E152B57B4D60044CFED /* AnimalPhotoPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalPhotoPage.swift; sourceTree = "<group>"; };
 		749B8F762B56308800BD40BC /* PetFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		749B8F792B56308800BD40BC /* PetFinderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetFinderApp.swift; sourceTree = "<group>"; };
 		749B8F7D2B56308900BD40BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -102,6 +116,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		746B2E052B57ADE10044CFED /* AnimalPhoto */ = {
+			isa = PBXGroup;
+			children = (
+				746B2E072B57ADF80044CFED /* ViewModel */,
+				746B2E062B57ADF30044CFED /* View */,
+			);
+			path = AnimalPhoto;
+			sourceTree = "<group>";
+		};
+		746B2E062B57ADF30044CFED /* View */ = {
+			isa = PBXGroup;
+			children = (
+				746B2E152B57B4D60044CFED /* AnimalPhotoPage.swift */,
+				745554042B57BB01000B0490 /* AnimalPhotoItemView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		746B2E072B57ADF80044CFED /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				746B2E112B57B3BC0044CFED /* AnimalPhotoViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		746B2E0A2B57B0A90044CFED /* URLProvider */ = {
+			isa = PBXGroup;
+			children = (
+				746B2E0B2B57B0B30044CFED /* APINinjasURLProvider.swift */,
+				746B2E0D2B57B0CE0044CFED /* PexelsURLProvider.swift */,
+			);
+			path = URLProvider;
+			sourceTree = "<group>";
+		};
 		749B8F6D2B56308800BD40BC = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +211,7 @@
 		749B8FA32B5630B700BD40BC /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				746B2E052B57ADE10044CFED /* AnimalPhoto */,
 				749B8FA62B5630E700BD40BC /* AnimalList */,
 				749B8FA42B5630C600BD40BC /* Main */,
 			);
@@ -210,6 +260,7 @@
 			children = (
 				749B8FAD2B5631A100BD40BC /* AnimalCategory.swift */,
 				749B8FB72B5666E300BD40BC /* Animal.swift */,
+				746B2E0F2B57B1D80044CFED /* AnimalPhoto.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -253,6 +304,7 @@
 		749B8FBC2B56679800BD40BC /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				746B2E0A2B57B0A90044CFED /* URLProvider */,
 				74DCD6062B578780006FB492 /* NetworkClient */,
 				749B8FC42B566B1D00BD40BC /* Animal */,
 			);
@@ -263,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				749B8FC52B566B2800BD40BC /* AnimaListResponse.swift */,
+				746B2E082B57AF560044CFED /* AnimaPhotoListResponse.swift */,
 			);
 			path = Animal;
 			sourceTree = "<group>";
@@ -413,15 +466,22 @@
 				749B8FAA2B56318500BD40BC /* AnimalCategoryItemView.swift in Sources */,
 				74F000A52B578D3800D4A810 /* AppDelegate.swift in Sources */,
 				749B8FB82B5666E300BD40BC /* Animal.swift in Sources */,
+				746B2E092B57AF560044CFED /* AnimaPhotoListResponse.swift in Sources */,
 				749B8FB02B565DFC00BD40BC /* Assets.swift in Sources */,
+				746B2E0C2B57B0B30044CFED /* APINinjasURLProvider.swift in Sources */,
 				749B8FC62B566B2800BD40BC /* AnimaListResponse.swift in Sources */,
+				746B2E122B57B3BC0044CFED /* AnimalPhotoViewModel.swift in Sources */,
+				745554052B57BB01000B0490 /* AnimalPhotoItemView.swift in Sources */,
 				74F000A72B578D8B00D4A810 /* SceneDelegate.swift in Sources */,
 				749B8FA82B56314800BD40BC /* AnimalCategoryView.swift in Sources */,
 				74E097562B57915600C24765 /* AnimalItemView.swift in Sources */,
 				749B8FB22B56625900BD40BC /* AnimalListPage.swift in Sources */,
+				746B2E0E2B57B0CE0044CFED /* PexelsURLProvider.swift in Sources */,
 				749B8FBE2B5667A400BD40BC /* NetworkClient.swift in Sources */,
 				749B8FAE2B5631A100BD40BC /* AnimalCategory.swift in Sources */,
 				749B8FC22B566AAA00BD40BC /* AnimalRepository.swift in Sources */,
+				746B2E162B57B4D60044CFED /* AnimalPhotoPage.swift in Sources */,
+				746B2E102B57B1D80044CFED /* AnimalPhoto.swift in Sources */,
 				749B8FB62B56650800BD40BC /* AnimalListViewModel.swift in Sources */,
 				749B8F7A2B56308800BD40BC /* PetFinderApp.swift in Sources */,
 				749B8FC02B56682D00BD40BC /* HttpMethod.swift in Sources */,
