@@ -31,7 +31,7 @@ struct AnimalListPage: View {
                 case .success(let animals):
                     ForEach(animals, id: \.name) { animal in
                         NavigationLink {
-                            AnimalPhotoPage(viewModel: AnimalPhotoViewModel.create(animal: animal))
+                            AnimalPhotoPage(viewModel: AnimalPhotoViewModel.create(animal: animal, category: viewModel.selectedAnimalCategory!))
                         } label: {
                             AnimalItemView(animal: animal)
                                 .padding(8)

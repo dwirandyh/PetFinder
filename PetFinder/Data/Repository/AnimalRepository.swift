@@ -10,7 +10,6 @@ import Foundation
 protocol AnimalRepository {
     func getAnimalCategory() async throws -> [AnimalCategory]
     func findAnimal(name: String) async throws -> [Animal]
-    func findAnimalPhoto(keyword: String, page: Int) async throws -> [AnimalPhoto]
 }
 
 
@@ -53,11 +52,4 @@ class AnimalRepositoryImpl: AnimalRepository {
         let response: [AnimalResponse] = try await networkClient.get(from: urlProvider)
         return response.map { $0.toEntity() }
     }
-    
-    func findAnimalPhoto(keyword: String, page: Int) async throws -> [AnimalPhoto] {
-        let urlProvider: PexelsURLProvider = .searchPhoto(keyword: keyword, page: page)
-        let response: AnimalPhotoListResponse = try await networkClient.get(from: urlProvider)
-        return response.photos.map { $0.toEntity() }
-    }
-    
 }

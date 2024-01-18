@@ -15,6 +15,23 @@ extension AnimalCategoryModel {
 }
 
 extension AnimalCategoryModel {
+    static func find(name: String) -> AnimalCategoryModel? {
+        let request = fetchRequest()
+        request.predicate = NSPredicate(format: "name == %@", name)
+        
+        do {
+            let result = try LocalStorageManager.shared.viewContenxt.fetch(request)
+            
+            if let firstObject = result.first {
+                return firstObject
+            } else {
+                return nil
+            }
+        } catch {
+            return nil
+        }
+    }
+    
     static func saveAnimalCategory(category: String, imageName: String) {
         let animalCategory: AnimalCategoryModel = AnimalCategoryModel(context: LocalStorageManager.shared.viewContenxt)
         animalCategory.name = category

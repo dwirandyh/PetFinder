@@ -41,6 +41,9 @@
 		74C71CA02B58E13A00C1997A /* DataResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C71C9F2B58E13A00C1997A /* DataResult.swift */; };
 		74C71CA22B58E20700C1997A /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C71CA12B58E20700C1997A /* ErrorView.swift */; };
 		74C71CA42B58E5C500C1997A /* ViewDidLoadModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C71CA32B58E5C500C1997A /* ViewDidLoadModifier.swift */; };
+		74C71CA62B58E74F00C1997A /* FavoritePhotoModel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C71CA52B58E74F00C1997A /* FavoritePhotoModel+Extension.swift */; };
+		74C71CA82B58FD4100C1997A /* AnimalPhotoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C71CA72B58FD4100C1997A /* AnimalPhotoRepository.swift */; };
+		74C71CAA2B58FDF000C1997A /* AnimalPhotoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C71CA92B58FDF000C1997A /* AnimalPhotoUseCase.swift */; };
 		74DCD6082B57878E006FB492 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DCD6072B57878E006FB492 /* NetworkError.swift */; };
 		74E097562B57915600C24765 /* AnimalItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E097552B57915600C24765 /* AnimalItemView.swift */; };
 		74F000A52B578D3800D4A810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F000A42B578D3800D4A810 /* AppDelegate.swift */; };
@@ -101,6 +104,9 @@
 		74C71C9F2B58E13A00C1997A /* DataResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataResult.swift; sourceTree = "<group>"; };
 		74C71CA12B58E20700C1997A /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		74C71CA32B58E5C500C1997A /* ViewDidLoadModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDidLoadModifier.swift; sourceTree = "<group>"; };
+		74C71CA52B58E74F00C1997A /* FavoritePhotoModel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoritePhotoModel+Extension.swift"; sourceTree = "<group>"; };
+		74C71CA72B58FD4100C1997A /* AnimalPhotoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalPhotoRepository.swift; sourceTree = "<group>"; };
+		74C71CA92B58FDF000C1997A /* AnimalPhotoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalPhotoUseCase.swift; sourceTree = "<group>"; };
 		74DCD6072B57878E006FB492 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		74E097552B57915600C24765 /* AnimalItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalItemView.swift; sourceTree = "<group>"; };
 		74F000A42B578D3800D4A810 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -155,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				7455540E2B57C522000B0490 /* AnimalUseCase.swift */,
+				74C71CA92B58FDF000C1997A /* AnimalPhotoUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -173,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				74C71C962B58C64200C1997A /* AnimalCategoryModel+Extension.swift */,
+				74C71CA52B58E74F00C1997A /* FavoritePhotoModel+Extension.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -363,6 +371,7 @@
 			isa = PBXGroup;
 			children = (
 				749B8FC12B566AAA00BD40BC /* AnimalRepository.swift */,
+				74C71CA72B58FD4100C1997A /* AnimalPhotoRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -551,13 +560,16 @@
 				74C71CA42B58E5C500C1997A /* ViewDidLoadModifier.swift in Sources */,
 				749B8FA82B56314800BD40BC /* AnimalCategoryView.swift in Sources */,
 				74E097562B57915600C24765 /* AnimalItemView.swift in Sources */,
+				74C71CA82B58FD4100C1997A /* AnimalPhotoRepository.swift in Sources */,
 				749B8FB22B56625900BD40BC /* AnimalListPage.swift in Sources */,
 				746B2E0E2B57B0CE0044CFED /* PexelsURLProvider.swift in Sources */,
 				74C71CA02B58E13A00C1997A /* DataResult.swift in Sources */,
+				74C71CAA2B58FDF000C1997A /* AnimalPhotoUseCase.swift in Sources */,
 				7455540B2B57C3B7000B0490 /* ActivityIndicator.swift in Sources */,
 				749B8FBE2B5667A400BD40BC /* NetworkClient.swift in Sources */,
 				749B8FAE2B5631A100BD40BC /* AnimalCategory.swift in Sources */,
 				74C71C972B58C64200C1997A /* AnimalCategoryModel+Extension.swift in Sources */,
+				74C71CA62B58E74F00C1997A /* FavoritePhotoModel+Extension.swift in Sources */,
 				749B8FC22B566AAA00BD40BC /* AnimalRepository.swift in Sources */,
 				746B2E162B57B4D60044CFED /* AnimalPhotoPage.swift in Sources */,
 				746B2E102B57B1D80044CFED /* AnimalPhoto.swift in Sources */,

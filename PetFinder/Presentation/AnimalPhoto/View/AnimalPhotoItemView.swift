@@ -11,13 +11,15 @@ import SwiftUI
 struct AnimalPhotoItemView: View {
     let photo: AnimalPhoto
     let isFavorite: Bool
+    let favoriteTapped: () -> Void
     
     @State
     var width: CGFloat = .zero
     
-    init(photo: AnimalPhoto, isFavorite: Bool = false) {
+    init(photo: AnimalPhoto, isFavorite: Bool = false, favoriteTapped: @escaping () -> Void) {
         self.photo = photo
         self.isFavorite = isFavorite
+        self.favoriteTapped = favoriteTapped
     }
     
     var body: some View {
@@ -52,14 +54,13 @@ struct AnimalPhotoItemView: View {
             
             Spacer()
             
-            Button {
-                
-            } label: {
+            Button(action: favoriteTapped) {
                 if isFavorite {
                     Image(systemName: "star.fill")
                         .resizable()
                         .renderingMode(.template)
                         .foregroundColor(Color.yellow)
+                        .frame(width: 24, height: 24)
                 }
                 else {
                     Image(systemName: "star")
@@ -93,6 +94,8 @@ struct AnimalPhotoItemView: View {
                     tiny: "https://images.pexels.com/photos/2220336/pexels-photo-2220336.jpeg?auto=compress&cs=tinysrgb&h=350"
                 )
             )
-        )
+        ) {
+            
+        }
     }
 }

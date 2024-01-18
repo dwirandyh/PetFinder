@@ -3,5 +3,13 @@
     <entity name="AnimalCategoryModel" representedClassName="AnimalCategoryModel" syncable="YES" codeGenerationType="class">
         <attribute name="imageName" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="favoritePhotos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FavoritePhotoModel" inverseName="animalCategory" inverseEntity="FavoritePhotoModel"/>
+    </entity>
+    <entity name="FavoritePhotoModel" representedClassName="FavoritePhotoModel" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="photoFile" optional="YES" attributeType="String"/>
+        <attribute name="photographer" optional="YES" attributeType="String"/>
+        <attribute name="photographerURL" optional="YES" attributeType="String"/>
+        <relationship name="animalCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AnimalCategoryModel" inverseName="favoritePhotos" inverseEntity="AnimalCategoryModel"/>
     </entity>
 </model>

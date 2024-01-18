@@ -24,14 +24,23 @@ struct AnimalPhotoPage: View {
             switch viewModel.photoResult {
             case .success(let photos):
                 List(photos) { photo in
-                    AnimalPhotoItemView(photo: photo)
-                        .onAppear {
-                            if photo == photos.last {
-                                Task {
-                                    await viewModel.findNextPhoto()
-                                }
+                    let isFavorite = viewModel.favoritePhoto.contains(where: { $0.id == photo.id })
+                    AnimalPhotoItemView(photo: photo, isFavorite: isFavorite) {
+                        if isFavorite {
+                            viewModel.removeFavoriteTapped(photo: photo)
+                        }
+                        else {
+                            viewModel.addFavoriteTapped(photo: photo)
+                        }
+                        
+                    }
+                    .onAppear {
+                        if photo == photos.last {
+                            Task {
+                                await viewModel.findNextPhoto()
                             }
                         }
+                    }
                 }
                 .listStyle(.plain)
             case .loading:
@@ -65,6 +74,10 @@ struct AnimalPhotoPage: View {
                 genus: "Acinonyx",
                 scientificName: "Acinonyx jubatus",
                 location: ["Africa"]
+            ),
+            category: AnimalCategory(
+                name: "Elephant",
+                imageName: "IconElephant"
             )
         )
     )
