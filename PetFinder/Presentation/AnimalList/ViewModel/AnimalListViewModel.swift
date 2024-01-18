@@ -27,7 +27,7 @@ class AnimalListViewModel: ObservableObject {
         self.useCase = useCase
     }
     
-    func onLoad() async  {
+    func onLoad() async {
         do {
             animalCategory = try await useCase.getAnimalCategory()
             
@@ -35,8 +35,7 @@ class AnimalListViewModel: ObservableObject {
             selectedAnimalCategory = defaultCategory
             let animals = try await useCase.findAnimal(name: defaultCategory.name)
             animalsResult = .success(animals)
-        }
-        catch {
+        } catch {
             animalsResult = .error
         }
     }
@@ -47,8 +46,7 @@ class AnimalListViewModel: ObservableObject {
             animalsResult = .loading
             let animals = try await useCase.findAnimal(name: category.name)
             animalsResult = .success(animals)
-        }
-        catch {
+        } catch {
             animalsResult = .error
         }
     }

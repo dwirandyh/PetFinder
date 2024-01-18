@@ -10,7 +10,7 @@ import Foundation
 
 protocol AnimalPhotoUseCase {
     func findAnimalPhoto(animal: Animal, page: Int) async throws -> [AnimalPhoto]
-    func getFavoritePhotoByCategory(category: AnimalCategory) -> [AnimalPhoto]
+    func getFavoritePhotoByCategory(category: AnimalCategory) throws -> [AnimalPhoto]
     func addPhotoToFavorite(category: AnimalCategory, photo: AnimalPhoto) throws
     func removePhotoFromFavorite(photo: AnimalPhoto) throws
 }
@@ -31,8 +31,8 @@ class AnimalPhotoUseCaseImpl: AnimalPhotoUseCase {
         return try await repository.findAnimalPhoto(keyword: animal.name, page: page)
     }
     
-    func getFavoritePhotoByCategory(category: AnimalCategory) -> [AnimalPhoto] {
-        return repository.getPhotoByCategory(category: category)
+    func getFavoritePhotoByCategory(category: AnimalCategory) throws -> [AnimalPhoto] {
+        return try repository.getPhotoByCategory(category: category)
     }
     
     func addPhotoToFavorite(category: AnimalCategory, photo: AnimalPhoto) throws {

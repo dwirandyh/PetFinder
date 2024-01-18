@@ -11,7 +11,7 @@ protocol AnimalPhotoRepository {
     func addPhotoToFavorite(category: AnimalCategory, photo: AnimalPhoto) throws
     func removePhotoFromFavorite(photo: AnimalPhoto) throws
     func findAnimalPhoto(keyword: String, page: Int) async throws -> [AnimalPhoto]
-    func getPhotoByCategory(category: AnimalCategory) -> [AnimalPhoto]
+    func getPhotoByCategory(category: AnimalCategory) throws -> [AnimalPhoto]
 }
 
 class AnimalPhotoRepositoryImpl: AnimalPhotoRepository {
@@ -42,8 +42,8 @@ class AnimalPhotoRepositoryImpl: AnimalPhotoRepository {
         return response.photos.map { $0.toEntity() }
     }
     
-    func getPhotoByCategory(category: AnimalCategory) -> [AnimalPhoto] {
-        let photos = FavoritePhotoModel.getPhotoByCategory(category: category)
+    func getPhotoByCategory(category: AnimalCategory) throws -> [AnimalPhoto] {
+        let photos = try FavoritePhotoModel.getPhotoByCategory(category: category)
         return photos.map { $0.toEntity() }
     }
 }

@@ -35,7 +35,7 @@ class AnimalPhotoViewModel: ObservableObject {
         do {
             photoResult = .loading
             
-            let loadedFavoritePhoto = useCase.getFavoritePhotoByCategory(category: category)
+            let loadedFavoritePhoto = try useCase.getFavoritePhotoByCategory(category: category)
             favoritePhoto = loadedFavoritePhoto
             
             let loadedPhotos: [AnimalPhoto] = try await useCase.findAnimalPhoto(animal: animal, page: page)

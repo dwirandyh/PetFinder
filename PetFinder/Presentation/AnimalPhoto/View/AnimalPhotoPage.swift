@@ -52,7 +52,7 @@ struct AnimalPhotoPage: View {
                 )
             }
         }
-        .navigationBarTitle("Discover Animal Photos", displayMode: .inline)
+        .navigationBarTitle("Animal Photos", displayMode: .automatic)
         .onLoad {
             Task {
                 await viewModel.onLoad()

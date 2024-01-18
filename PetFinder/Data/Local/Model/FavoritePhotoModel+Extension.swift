@@ -65,7 +65,7 @@ extension FavoritePhotoModel {
         }
     }
     
-    static func getPhotoByCategory(category: AnimalCategory) -> [FavoritePhotoModel] {
+    static func getPhotoByCategory(category: AnimalCategory) throws -> [FavoritePhotoModel] {
         let request = AnimalCategoryModel.fetchRequest()
         request.predicate = NSPredicate(format: "name == %@", category.name)
         
@@ -77,7 +77,7 @@ extension FavoritePhotoModel {
                 return []
             }
         } catch {
-            return []
+            throw error
         }
     }
 }
