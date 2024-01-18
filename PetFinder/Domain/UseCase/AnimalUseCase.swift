@@ -8,6 +8,7 @@
 import Foundation
 
 protocol AnimalUseCase {
+    func getAnimalCategory() async throws -> [AnimalCategory]
     func findAnimal(name: String) async throws -> [Animal]
     func findAnimalPhoto(keyword: String, page: Int) async throws -> [AnimalPhoto]
 }
@@ -22,6 +23,10 @@ class AnimalUseCaseImpl: AnimalUseCase {
     
     init(repository: AnimalRepository) {
         self.repository = repository
+    }
+    
+    func getAnimalCategory() async throws -> [AnimalCategory] {
+        return try await repository.getAnimalCategory()
     }
     
     func findAnimal(name: String) async throws -> [Animal] {

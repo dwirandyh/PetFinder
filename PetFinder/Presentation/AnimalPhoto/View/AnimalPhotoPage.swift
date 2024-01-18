@@ -21,13 +21,12 @@ struct AnimalPhotoPage: View {
     
     var body: some View {
         VStack {
-            if viewModel.photos.isEmpty && viewModel.isLoading {
-                ActivityIndicator(isAnimating: $viewModel.isLoading, style: .large)
-            } else {
-                List(viewModel.photos) { photo in
+            switch viewModel.photoResult {
+            case .success(let photos):
+                List(photos) { photo in
                     AnimalPhotoItemView(photo: photo)
                         .onAppear {
-                            if photo == viewModel.photos.last {
+                            if photo == photos.last {
                                 Task {
                                     await viewModel.findNextPhoto()
                                 }
@@ -35,12 +34,19 @@ struct AnimalPhotoPage: View {
                         }
                 }
                 .listStyle(.plain)
+            case .loading:
+                ActivityIndicator(style: .large)
+            case .error:
+                ErrorView(
+                    title: "Opss.. Something went wrong",
+                    message: "Failed to load photo, please try again alter"
+                )
             }
         }
         .navigationBarTitle("Discover Animal Photos", displayMode: .inline)
-        .onAppear {
+        .onLoad {
             Task {
-                await viewModel.findAnimalPhoto()
+                await viewModel.onLoad()
             }
         }
     }

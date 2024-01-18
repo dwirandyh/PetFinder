@@ -15,9 +15,11 @@ class AnimalListViewModel: ObservableObject {
     }
     
     @Published
-    private (set) var animals: [Animal] = []
+    private (set) var animalsResult: DataResult<[Animal]> = .loading
     @Published
-    private (set) var selectedAnimalCategory: AnimalCategory = .defaultSelectedCategory
+    private (set) var animalCategory: [AnimalCategory] = []
+    @Published
+    private (set) var selectedAnimalCategory: AnimalCategory?
     
     private let useCase: AnimalUseCase
     
@@ -25,17 +27,29 @@ class AnimalListViewModel: ObservableObject {
         self.useCase = useCase
     }
     
-    func fetchAnimals(category: AnimalCategory) async {
-        selectedAnimalCategory = category
-        await fetchAnimals()
-    }
-    
-    func fetchAnimals() async {
+    func onLoad() async  {
         do {
-            animals = try await useCase.findAnimal(name: selectedAnimalCategory.name)
+            animalCategory = try await useCase.getAnimalCategory()
+            
+            guard let defaultCategory = animalCategory.first else { return }
+            selectedAnimalCategory = defaultCategory
+            let animals = try await useCase.findAnimal(name: defaultCategory.name)
+            animalsResult = .success(animals)
         }
         catch {
-            print(error)
+            animalsResult = .error
+        }
+    }
+    
+    func animalCategoryDidChange(category: AnimalCategory) async {
+        selectedAnimalCategory = category
+        do {
+            animalsResult = .loading
+            let animals = try await useCase.findAnimal(name: category.name)
+            animalsResult = .success(animals)
+        }
+        catch {
+            animalsResult = .error
         }
     }
 }

@@ -14,11 +14,11 @@ class AnimalPhotoViewModel: ObservableObject {
         return AnimalPhotoViewModel(animal: animal, useCase: AnimalUseCaseImpl.create())
     }
     
-    @Published
-    private (set) var photos: [AnimalPhoto] = []
-    @Published
-    var isLoading: Bool = false
     
+    @Published
+    private (set) var photoResult: DataResult<[AnimalPhoto]> = .loading
+    
+    private var photos: [AnimalPhoto] = []
     private var page: Int = 1
     private let animal: Animal
     private let useCase: AnimalUseCase
@@ -28,22 +28,27 @@ class AnimalPhotoViewModel: ObservableObject {
         self.useCase = useCase
     }
     
-    func findAnimalPhoto() async {
+    func onLoad() async {
         do {
-            isLoading = true
+            photoResult = .loading
             
             let loadedPhotos: [AnimalPhoto] = try await useCase.findAnimalPhoto(keyword: animal.name, page: page)
             photos.append(contentsOf: loadedPhotos)
-            
-            isLoading = false
+            photoResult = .success(photos)
         }
         catch {
-            isLoading = false
+            photoResult = .error
         }
     }
     
     func findNextPhoto() async {
         page += 1
-        await findAnimalPhoto()
+        do {
+            let loadedPhotos: [AnimalPhoto] = try await useCase.findAnimalPhoto(keyword: animal.name, page: page)
+            photos.append(contentsOf: loadedPhotos)
+            photoResult = .success(photos)
+        } catch {
+            
+        }
     }
 }
