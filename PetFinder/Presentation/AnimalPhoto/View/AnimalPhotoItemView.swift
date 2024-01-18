@@ -48,7 +48,7 @@ struct AnimalPhotoItemView: View {
     
     func photographerView() -> some View {
         HStack {
-            Text(photo.photographer)
+            Text("Photo By: \(photo.photographer)")
                 .font(.system(size: 16, weight: .semibold))
                 .foregroundColor(.white)
             

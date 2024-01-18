@@ -48,6 +48,7 @@ struct FavoritePage: View {
                 }
             }
         }
+        .navigationBarTitle("Favorite Photo", displayMode: .large)
         .frame(maxHeight: .infinity, alignment: .top)
         .background(Color.backgroundColor)
         .padding(.vertical, 16)

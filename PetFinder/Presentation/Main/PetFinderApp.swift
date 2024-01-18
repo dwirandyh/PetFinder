@@ -37,11 +37,10 @@ struct PetFinderApp: View {
 struct TabBarView: View {
     
     @State var tabSelection: Int = 0
-    @State var tabItemTitle = ["Animal Finder", "Favorite Photo"]
     
     var body: some View {
         NavigationView {
-            TabView {
+            TabView() {
                 AnimalListPage(viewModel: AnimalListViewModel.create())
                     .tabItem {
                         VStack {
@@ -60,7 +59,7 @@ struct TabBarView: View {
                     }
                     .tag(1)
             }
-            .navigationBarTitle(tabItemTitle[tabSelection])
+            .navigationBarTitle("Animal Finder")
         }
     }
 }
