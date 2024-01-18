@@ -15,13 +15,13 @@ extension FavoritePhotoModel {
             photographer: photographer ?? "",
             photographerURL: URL(string: photographerURL ?? ""),
             source: AnimalPhoto.PhotoSource(
-                original: photoFile ?? "",
-                large: photoFile ?? "",
-                medium: photoFile ?? "",
-                small: photoFile ?? "",
-                portrait: photoFile ?? "",
-                landspace: photoFile ?? "",
-                tiny: photoFile ?? ""
+                original: photoSource?.original ?? "",
+                large: photoSource?.large ?? "",
+                medium: photoSource?.medium ?? "",
+                small: photoSource?.small ?? "",
+                portrait: photoSource?.portrait ?? "",
+                landscape: photoSource?.landscape ?? "",
+                tiny: photoSource?.tiny ?? ""
             )
         )
     }
@@ -35,7 +35,17 @@ extension FavoritePhotoModel {
         favoritePhotoModel.id = Int32(photo.id)
         favoritePhotoModel.photographer = photo.photographer
         favoritePhotoModel.photographerURL = photo.photographerURL?.absoluteString
-        favoritePhotoModel.photoFile = photo.source.medium
+        
+        let photoSource = PhotoSourceModel(context: LocalStorageManager.shared.viewContenxt)
+        photoSource.original = photo.source.original
+        photoSource.large = photo.source.large
+        photoSource.medium = photo.source.medium
+        photoSource.small = photo.source.small
+        photoSource.portrait = photo.source.portrait
+        photoSource.landscape = photo.source.landscape
+        photoSource.tiny = photo.source.tiny
+        
+        favoritePhotoModel.photoSource = photoSource
         
         animalCategoryModel?.addToFavoritePhotos(favoritePhotoModel)
         

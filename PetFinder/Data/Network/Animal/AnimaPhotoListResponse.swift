@@ -112,7 +112,7 @@ extension AnimalPhotoListResponse.Src {
             medium: medium,
             small: small,
             portrait: portrait,
-            landspace: landscape,
+            landscape: landscape,
             tiny: tiny
         )
     }

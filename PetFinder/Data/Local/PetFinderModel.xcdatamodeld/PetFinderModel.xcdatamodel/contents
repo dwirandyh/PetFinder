@@ -11,5 +11,16 @@
         <attribute name="photographer" optional="YES" attributeType="String"/>
         <attribute name="photographerURL" optional="YES" attributeType="String"/>
         <relationship name="animalCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AnimalCategoryModel" inverseName="favoritePhotos" inverseEntity="AnimalCategoryModel"/>
+        <relationship name="photoSource" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PhotoSourceModel"/>
+    </entity>
+    <entity name="PhotoSourceModel" representedClassName="PhotoSourceModel" syncable="YES" codeGenerationType="class">
+        <attribute name="landscape" optional="YES" attributeType="String"/>
+        <attribute name="large" optional="YES" attributeType="String"/>
+        <attribute name="medium" optional="YES" attributeType="String"/>
+        <attribute name="original" optional="YES" attributeType="String"/>
+        <attribute name="portrait" optional="YES" attributeType="String"/>
+        <attribute name="small" optional="YES" attributeType="String"/>
+        <attribute name="tiny" optional="YES" attributeType="String"/>
+        <relationship name="photo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PhotoSourceModel"/>
     </entity>
 </model>
