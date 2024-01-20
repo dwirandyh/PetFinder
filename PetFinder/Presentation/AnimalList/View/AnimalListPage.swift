@@ -14,37 +14,45 @@ struct AnimalListPage: View {
     
     var body: some View {
         VStack(spacing: 16) {
-            Text("Animal Finder")
-                .font(.system(size: 24, weight: .bold))
-                .padding(.horizontal, 16)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            
-            AnimalCategoryView(selectedCategory: viewModel.selectedAnimalCategory) { category in
+            AnimalCategoryView(categories: viewModel.animalCategory, selectedCategory: viewModel.selectedAnimalCategory) { category in
                 Task {
-                    await viewModel.fetchAnimals(category: category)
+                    await viewModel.animalCategoryDidChange(category: category)
                 }
             }
             .fixedSize(horizontal: false, vertical: true)
             
             ScrollView(showsIndicators: false) {
-                ForEach(viewModel.animals, id: \.name) { animal in
-                    NavigationLink {
-                        AnimalPhotoPage(viewModel: AnimalPhotoViewModel.create(animal: animal))
-                    } label: {
-                        AnimalItemView(animal: animal)
-                            .padding(8)
+                switch viewModel.animalsResult {
+                case .success(let animals):
+                    ForEach(animals, id: \.name) { animal in
+                        NavigationLink {
+                            AnimalPhotoPage(viewModel: AnimalPhotoViewModel.create(animal: animal, category: viewModel.selectedAnimalCategory!))
+                        } label: {
+                            AnimalItemView(animal: animal)
+                                .padding(8)
+                        }
+                        .buttonStyle(.plain)
                     }
-                    .buttonStyle(.plain)
+                case .error:
+                    ErrorView(
+                        title: "Oppss.. Something went wrong",
+                        message: "Failed to get data from server, please check internet connection and try again"
+                    )
+                    .padding(.top, 40)
+                case .loading:
+                    ActivityIndicator(style: .large)
+                        .padding(.top, 40)
                 }
+                
             }
             .padding(.horizontal, 16)
         }
-        .navigationBarHidden(true)
+        .navigationBarTitle("Animal Finder", displayMode: .large)
         .background(Color.backgroundColor)
         .padding(.vertical, 16)
-        .onAppear {
+        .onLoad {
             Task {
-                await viewModel.fetchAnimals()
+                await viewModel.onLoad()
             }
         }
     }

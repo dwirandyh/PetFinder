@@ -21,7 +21,7 @@ extension AnimalPhoto {
         let medium: String
         let small: String
         let portrait: String
-        let landspace: String
+        let landscape: String
         let tiny: String
     }
 }

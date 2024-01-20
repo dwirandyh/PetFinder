@@ -21,26 +21,41 @@ struct AnimalPhotoPage: View {
     
     var body: some View {
         VStack {
-            if viewModel.photos.isEmpty && viewModel.isLoading {
-                ActivityIndicator(isAnimating: $viewModel.isLoading, style: .large)
-            } else {
-                List(viewModel.photos) { photo in
-                    AnimalPhotoItemView(photo: photo)
-                        .onAppear {
-                            if photo == viewModel.photos.last {
-                                Task {
-                                    await viewModel.findNextPhoto()
-                                }
+            switch viewModel.photoResult {
+            case .success(let photos):
+                List(photos) { photo in
+                    let isFavorite = viewModel.favoritePhoto.contains(where: { $0.id == photo.id })
+                    AnimalPhotoItemView(photo: photo, isFavorite: isFavorite) {
+                        if isFavorite {
+                            viewModel.removeFavoriteTapped(photo: photo)
+                        }
+                        else {
+                            viewModel.addFavoriteTapped(photo: photo)
+                        }
+                        
+                    }
+                    .onAppear {
+                        if photo == photos.last {
+                            Task {
+                                await viewModel.findNextPhoto()
                             }
                         }
+                    }
                 }
                 .listStyle(.plain)
+            case .loading:
+                ActivityIndicator(style: .large)
+            case .error:
+                ErrorView(
+                    title: "Opss.. Something went wrong",
+                    message: "Failed to load photo, please try again alter"
+                )
             }
         }
-        .navigationBarTitle("Discover Animal Photos", displayMode: .inline)
-        .onAppear {
+        .navigationBarTitle("Animal Photos", displayMode: .automatic)
+        .onLoad {
             Task {
-                await viewModel.findAnimalPhoto()
+                await viewModel.onLoad()
             }
         }
     }
@@ -48,7 +63,7 @@ struct AnimalPhotoPage: View {
 
 #Preview {
     AnimalPhotoPage(
-        viewModel: AnimalPhotoViewModel(
+        viewModel: AnimalPhotoViewModel.create(
             animal: Animal(
                 name: "Cheetah",
                 kingdom: "Animalia",
@@ -60,7 +75,10 @@ struct AnimalPhotoPage: View {
                 scientificName: "Acinonyx jubatus",
                 location: ["Africa"]
             ),
-            repository: AnimalRepositoryImpl.create()
+            category: AnimalCategory(
+                name: "Elephant",
+                imageName: "IconElephant"
+            )
         )
     )
 }

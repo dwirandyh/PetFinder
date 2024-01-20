@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="23C64" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="AnimalCategoryModel" representedClassName="AnimalCategoryModel" syncable="YES" codeGenerationType="class">
+        <attribute name="imageName" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="favoritePhotos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FavoritePhotoModel" inverseName="animalCategory" inverseEntity="FavoritePhotoModel"/>
+    </entity>
+    <entity name="FavoritePhotoModel" representedClassName="FavoritePhotoModel" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="photoFile" optional="YES" attributeType="String"/>
+        <attribute name="photographer" optional="YES" attributeType="String"/>
+        <attribute name="photographerURL" optional="YES" attributeType="String"/>
+        <relationship name="animalCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AnimalCategoryModel" inverseName="favoritePhotos" inverseEntity="AnimalCategoryModel"/>
+        <relationship name="photoSource" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PhotoSourceModel"/>
+    </entity>
+    <entity name="PhotoSourceModel" representedClassName="PhotoSourceModel" syncable="YES" codeGenerationType="class">
+        <attribute name="landscape" optional="YES" attributeType="String"/>
+        <attribute name="large" optional="YES" attributeType="String"/>
+        <attribute name="medium" optional="YES" attributeType="String"/>
+        <attribute name="original" optional="YES" attributeType="String"/>
+        <attribute name="portrait" optional="YES" attributeType="String"/>
+        <attribute name="small" optional="YES" attributeType="String"/>
+        <attribute name="tiny" optional="YES" attributeType="String"/>
+        <relationship name="photo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PhotoSourceModel"/>
+    </entity>
+</model>

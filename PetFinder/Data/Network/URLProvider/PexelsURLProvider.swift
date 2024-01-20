@@ -15,7 +15,10 @@ struct PexelsURLProvider: URLProvider {
     ]
     
     var url: URL? {
-        return URL(string: "\(baseURL)/\(path)")
+        guard let encodedStringURL = "\(baseURL)/\(path)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        else { return nil }
+        let url = URL(string: encodedStringURL)
+        return url
     }
 }
 

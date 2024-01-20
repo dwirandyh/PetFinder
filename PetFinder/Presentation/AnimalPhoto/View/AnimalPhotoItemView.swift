@@ -11,13 +11,15 @@ import SwiftUI
 struct AnimalPhotoItemView: View {
     let photo: AnimalPhoto
     let isFavorite: Bool
+    let favoriteTapped: () -> Void
     
     @State
     var width: CGFloat = .zero
     
-    init(photo: AnimalPhoto, isFavorite: Bool = false) {
+    init(photo: AnimalPhoto, isFavorite: Bool = false, favoriteTapped: @escaping () -> Void) {
         self.photo = photo
         self.isFavorite = isFavorite
+        self.favoriteTapped = favoriteTapped
     }
     
     var body: some View {
@@ -46,20 +48,19 @@ struct AnimalPhotoItemView: View {
     
     func photographerView() -> some View {
         HStack {
-            Text(photo.photographer)
+            Text("Photo By: \(photo.photographer)")
                 .font(.system(size: 16, weight: .semibold))
                 .foregroundColor(.white)
             
             Spacer()
             
-            Button {
-                
-            } label: {
+            Button(action: favoriteTapped) {
                 if isFavorite {
                     Image(systemName: "star.fill")
                         .resizable()
                         .renderingMode(.template)
                         .foregroundColor(Color.yellow)
+                        .frame(width: 24, height: 24)
                 }
                 else {
                     Image(systemName: "star")
@@ -89,10 +90,12 @@ struct AnimalPhotoItemView: View {
                     medium: "https://images.pexels.com/photos/2220336/pexels-photo-2220336.jpeg?auto=compress&cs=tinysrgb&h=350",
                     small: "https://images.pexels.com/photos/2220336/pexels-photo-2220336.jpeg?auto=compress&cs=tinysrgb&h=350",
                     portrait: "https://images.pexels.com/photos/2220336/pexels-photo-2220336.jpeg?auto=compress&cs=tinysrgb&h=350",
-                    landspace: "https://images.pexels.com/photos/2220336/pexels-photo-2220336.jpeg?auto=compress&cs=tinysrgb&h=350",
+                    landscape: "https://images.pexels.com/photos/2220336/pexels-photo-2220336.jpeg?auto=compress&cs=tinysrgb&h=350",
                     tiny: "https://images.pexels.com/photos/2220336/pexels-photo-2220336.jpeg?auto=compress&cs=tinysrgb&h=350"
                 )
             )
-        )
+        ) {
+            
+        }
     }
 }

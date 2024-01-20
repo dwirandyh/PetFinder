@@ -32,10 +32,3 @@ struct AnimalCategoryItemView: View {
         }
     }
 }
-
-#Preview {
-    AnimalCategoryItemView(category: .predefined.first!, isSelected: false) {
-        
-    }
-    .padding(16)
-}
