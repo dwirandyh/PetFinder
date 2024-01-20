@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum DataResult<T> {
+enum DataResult<T: Equatable>: Equatable {
     case success(T)
     case error
     case loading
